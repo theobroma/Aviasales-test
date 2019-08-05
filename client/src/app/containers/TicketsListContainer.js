@@ -18,7 +18,7 @@ class TicketsList extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-  tickets: state.tickets.data,
+  tickets: state.tickets.tickets,
   filter: state.filter,
   currency: state.currency.data.exchangeRate.filter((item) => {
     return item.currency === state.filter.currency;

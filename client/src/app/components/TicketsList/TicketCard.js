@@ -26,6 +26,7 @@ const TicketCard = (props) => {
     currency,
     filter,
   } = props;
+  console.log(props);
 
   const renderStops = (val) => {
     if (val === 0) {

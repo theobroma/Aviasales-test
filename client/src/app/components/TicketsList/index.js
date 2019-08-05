@@ -6,16 +6,14 @@ import { filterShape, ticketShape } from 'types';
 import TicketCard from './TicketCard';
 
 const TicketsList = (props) => {
-  const { tickets, filter } = props;
+  const { tickets = [], filter } = props;
 
   const filteredTickets = tickets.filter((ticket) => {
     return filter.stops.includes(ticket.stops);
   });
 
   const renderTickets = () =>
-    filteredTickets.map((ticket) => (
-      <TicketCard key={shortid.generate()} ticket={ticket} {...props} />
-    ));
+    tickets.map((ticket) => <TicketCard key={shortid.generate()} ticket={ticket} {...props} />);
 
   return (
     <Fragment>

@@ -7,6 +7,7 @@ import { loadState, saveState } from './helpers/localStorage';
 import rootReducer from './reducers';
 // mock data
 import TICKETS_MOCK_DATA from './helpers/TICKETS_MOCK_DATA.json';
+import TICKETS_MOCK_DATA_V2 from './helpers/TICKETS_MOCK_DATA_V2.json';
 import CURRENCY_MOCK_DATA from './helpers/CURRENCY_MOCK_DATA.json';
 
 const configureStore = () => {
@@ -14,7 +15,8 @@ const configureStore = () => {
 
   let totalInitialState = {
     tickets: {
-      data: TICKETS_MOCK_DATA.tickets,
+      tickets: TICKETS_MOCK_DATA_V2.tickets,
+      stop: false,
       pending: false,
       errorMessage: '',
     },

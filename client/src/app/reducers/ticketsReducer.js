@@ -1,7 +1,8 @@
 // import { FETCH_USERS_PENDING } from '../actions';
 
 export const initialState = {
-  data: [],
+  tickets: [],
+  stop: false,
   pending: false,
   errorMessage: '',
 };
