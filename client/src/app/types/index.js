@@ -19,18 +19,18 @@ export const currencyShape = shape({
   saleRateNB: number,
 });
 
-export const ticketShape = shape({
-  arrival_date: string,
-  arrival_time: string,
-  // carrier: PropTypes.string,
-  departure_date: string,
-  departure_time: string,
-  destination: string,
-  destination_name: string,
+export const segmentShape = shape({
   origin: string,
-  origin_name: string,
+  destination: string,
+  date: string,
+  stops: arrayOf(string),
+  duration: number,
+});
+
+export const ticketShape = shape({
   price: number,
-  stops: number,
+  carrier: string,
+  segments: arrayOf(segmentShape),
 });
 
 export default {
