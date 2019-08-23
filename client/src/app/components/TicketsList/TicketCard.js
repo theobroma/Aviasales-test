@@ -32,19 +32,6 @@ const TicketCard = (props) => {
   } = props;
   console.log(props);
 
-  const renderStops = (val) => {
-    if (val === 0) {
-      return `Без пересадок`;
-    }
-    if (val === 1) {
-      return `1 пересадка`;
-    }
-    if (val === 2 || val === 3 || val === 4) {
-      return `${val} пересадки`;
-    }
-    return `${val} пересадок`;
-  };
-
   const TitleBlock = (
     <Row style={{ marginBottom: '18px' }}>
       <Col md={16}>

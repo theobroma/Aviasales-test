@@ -9,6 +9,7 @@ const StyledSegmentRow = styled.div`
     line-height: 18px;
     text-transform: uppercase;
     letter-spacing: -0.8px;
+    word-spacing: 3px;
     color: #a0b0b9;
   }
   .value {
@@ -16,6 +17,7 @@ const StyledSegmentRow = styled.div`
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
+    word-spacing: 3px;
     color: #4a4a4a;
   }
 `;

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col, Button } from 'antd';
+import format from 'helpers/format';
 import StyledSegmentRow from './SegmentRow.styled';
 
 // {
@@ -17,6 +18,21 @@ const SegmentRow = (props) => {
   const {
     segment: { origin, destination, date, stops, duration },
   } = props;
+
+  const renderStopsCount = (val) => {
+    if (val === 0) {
+      return `Без пересадок`;
+    }
+    if (val === 1) {
+      return `1 пересадка`;
+    }
+    if (val === 2 || val === 3 || val === 4) {
+      return `${val} пересадки`;
+    }
+    return `${val} пересадок`;
+  };
+
+  const renderStops = () => stops.join(', ');
   return (
     <StyledSegmentRow>
       <Row>
@@ -29,8 +45,8 @@ const SegmentRow = (props) => {
           <div className="value">10:45 </div>
         </Col>
         <Col md={8}>
-          <div className="label">2 пересадки</div>
-          <div className="value">{stops[0]} </div>
+          <div className="label">{renderStopsCount(stops.length)}</div>
+          <div className="value">{renderStops()} </div>
         </Col>
       </Row>
     </StyledSegmentRow>
