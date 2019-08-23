@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
 const StyledTicketsFilter = styled.div`
+  background: #ffffff;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-  border: 1px solid #eceff1;
-  color: #4a4a4a;
-  background-color: #fff;
-  box-shadow: 0 4px 12px 0 rgba(91, 137, 164, 0.2);
+  border: 1px solid transparent;
+  margin-bottom: 20px;
+  padding: 15px;
 `;
 export default StyledTicketsFilter;

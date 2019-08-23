@@ -46,13 +46,14 @@ const TicketCard = (props) => {
   };
 
   const TitleBlock = (
-    <Row>
+    <Row style={{ marginBottom: '18px' }}>
       <Col md={16}>
-        <span className="price">{Math.ceil(price / currency[0].purchaseRateNB)}</span>
+        {/* <span className="price">{Math.ceil(price / currency[0].purchaseRateNB)}</span> */}
+        <span className="price">13 400 Р</span>
       </Col>
       <Col md={8}>
         <div className="airlines-logo">
-          <img src={`http://pics.avs.io/99/36/${carrier}.png`} alt="turkish-airlines" />
+          <img src={`http://pics.avs.io/99/36/${carrier}.png`} alt={carrier} />
         </div>
       </Col>
     </Row>
