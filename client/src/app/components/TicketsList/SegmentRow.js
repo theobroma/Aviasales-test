@@ -33,6 +33,7 @@ const SegmentRow = (props) => {
   };
 
   const renderStops = () => stops.join(', ');
+
   return (
     <StyledSegmentRow>
       <Row>
@@ -42,7 +43,7 @@ const SegmentRow = (props) => {
         </Col>
         <Col md={8}>
           <div className="label">В пути</div>
-          <div className="value">10:45 </div>
+          <div className="value">{`${Math.floor(duration / 60)}:${duration % 60}`} </div>
         </Col>
         <Col md={8}>
           <div className="label">{renderStopsCount(stops.length)}</div>
