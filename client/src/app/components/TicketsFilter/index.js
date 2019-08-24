@@ -66,11 +66,6 @@ class TicketsFilter extends React.Component {
     const { indeterminate, checkAll, checkedList } = this.state;
     return (
       <Fragment>
-        <Row>
-          <Col md={24} style={{ visibility: 'hidden' }}>
-            <div>for padding</div>
-          </Col>
-        </Row>
         <StyledTicketsFilter>
           <div className="pa3">
             <div className="form-group">

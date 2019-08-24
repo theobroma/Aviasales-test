@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col } from 'antd';
+import { Row, Col, Radio } from 'antd';
 import shortid from 'shortid';
 import { filterShape, ticketShape } from 'types';
 import TicketCard from './TicketCard';
@@ -18,9 +18,12 @@ const TicketsList = (props) => {
   return (
     <Fragment>
       <Row>
-        <Col md={16}>{/* TODO: sort */}</Col>
-        <Col md={8} className="flex justify-end">
-          <div>Количество :{filteredTickets.length}</div>
+        <Col md={24}>
+          {/* <Radio.Group value={filter.currency} onChange={this.handleCurrencyChange}> */}
+          <Radio.Group>
+            <Radio.Button value="fastest">Самый быстрый</Radio.Button>
+            <Radio.Button value="cheapest">Самый дешевый</Radio.Button>
+          </Radio.Group>
         </Col>
       </Row>
       {renderTickets()}

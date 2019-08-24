@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col, Button } from 'antd';
-import format from 'helpers/format';
+// import format from 'helpers/format';
 import StyledSegmentRow from './SegmentRow.styled';
 
 // {
