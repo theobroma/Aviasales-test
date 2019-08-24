@@ -32,11 +32,24 @@ const TicketCard = (props) => {
   } = props;
   console.log(props);
 
+  const renderCurrencySign = (val) => {
+    if (val === 'USD') {
+      return '\u0024';
+    }
+    if (val === 'EUR') {
+      return '\u20AC';
+    }
+    return '\u20B4';
+  };
+
   const TitleBlock = (
     <Row style={{ marginBottom: '18px' }}>
       <Col md={16}>
-        {/* <span className="price">{Math.ceil(price / currency[0].purchaseRateNB)}</span> */}
-        <span className="price">13 400 Р</span>
+        <span className="price">
+          {Math.ceil(price / currency[0].purchaseRateNB)}
+          <span className="ml2">{renderCurrencySign(currency[0].currency)}</span>
+        </span>
+        {/* <span className="price">13 400 Р</span> */}
       </Col>
       <Col md={8}>
         <div className="airlines-logo">
