@@ -17,6 +17,7 @@ const TicketsList = (props) => {
 
   return (
     <Fragment>
+      {/* {tickets.length} */}
       <Row>
         <Col md={24}>
           {/* <Radio.Group value={filter.currency} onChange={this.handleCurrencyChange}> */}

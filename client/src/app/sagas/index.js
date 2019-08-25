@@ -20,26 +20,21 @@ import {
 
 const ENDPOINT = `https://front-test.beta.aviasales.ru`;
 
-// export function* getSearchId() {
-//   console.log('getSearchId SAGA');
-//   try {
-//     const response = yield call(axios.get, `https://front-test.beta.aviasales.ru/search`);
-//     console.log(response);
-//     const result = response.data;
+export function* getSearchId() {
+  // console.log('getSearchId SAGA');
+  try {
+    const response = yield call(() => axios({ url: `${ENDPOINT}/search` }));
+    const { searchId } = response.data;
 
-//     yield put({ type: GET_SEARCH_ID + SUCCESS, result });
-//   } catch (error) {
-//     yield put({ type: GET_SEARCH_ID + ERROR, error });
-//   }
-// }
+    yield put({ type: GET_SEARCH_ID + SUCCESS, searchId });
+  } catch (error) {
+    yield put({ type: GET_SEARCH_ID + ERROR, error });
+  }
+}
 
-// export function* watchGetSearchId() {
-//   yield takeEvery(GET_SEARCH_ID + REQUEST, getSearchId);
-// }
-
-// export default function* rootSaga() {
-//   yield all([watchGetSearchId()]);
-// }
+export function* watchGetSearchId() {
+  yield takeEvery(GET_SEARCH_ID + REQUEST, getSearchId);
+}
 
 /**
  * Saga worker.
@@ -47,11 +42,14 @@ const ENDPOINT = `https://front-test.beta.aviasales.ru`;
 function* pollSaga(action) {
   while (true) {
     try {
-      const response = yield call(() => axios({ url: `${ENDPOINT}/search` }));
-      const { searchId } = response.data;
-      const { data } = yield call(() => axios({ url: `${ENDPOINT}/tickets?searchId=${searchId}` }));
+      // const response = yield call(() => axios({ url: `${ENDPOINT}/search` }));
+      // const { searchId } = response.data;
+      const { data } = yield call(() => axios({ url: `${ENDPOINT}/tickets?searchId=2grzx` }));
       yield put(getDataSuccessAction(data));
-      yield call(delay, 4000);
+      if (data.stop) {
+        yield put({ type: POLL_STOP });
+      }
+      yield delay(3000);
     } catch (err) {
       yield put(getDataFailureAction(err));
     }

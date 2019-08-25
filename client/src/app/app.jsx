@@ -18,7 +18,7 @@ store.runSaga(rootSaga);
 const action = {
   type: 'POLL_START',
 };
-store.dispatch(action);
+// store.dispatch(action);
 
 render(
   <Provider store={store}>

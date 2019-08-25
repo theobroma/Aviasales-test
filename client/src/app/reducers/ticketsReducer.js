@@ -21,6 +21,7 @@ const initialState = {
 };
 
 const tickets = (state = initialState, action) => {
+  console.log(action);
   switch (action.type) {
     case POLL_START:
       return {
@@ -35,7 +36,13 @@ const tickets = (state = initialState, action) => {
     case GET_DATA_SUCCESS:
       return {
         ...state,
-        data: action.payload,
+        tickets: [...state.tickets, ...action.payload.tickets],
+        polling: !action.payload.stop,
+      };
+    case GET_DATA_FAILURE:
+      return {
+        ...state,
+        polling: false,
       };
     default:
       return state;

@@ -16,9 +16,10 @@ const configureStore = () => {
   const sagaMiddleware = createSagaMiddleware();
   const persistedState = loadState();
 
-  let totalInitialState = {
+  const totalInitialState = {
     tickets: {
-      tickets: TICKETS_MOCK_DATA_V2.tickets,
+      // tickets: TICKETS_MOCK_DATA_V2.tickets,
+      tickets: [],
       stop: false,
       pending: false,
       errorMessage: '',
@@ -30,9 +31,9 @@ const configureStore = () => {
     },
   };
   // if persistedState is not empty then assign parsed persistedState to initState
-  if (persistedState) {
-    totalInitialState = persistedState;
-  }
+  // if (persistedState) {
+  //   totalInitialState = persistedState;
+  // }
 
   const logger = createLogger({
     collapsed: true,
@@ -50,12 +51,12 @@ const configureStore = () => {
     composeEnhancers(applyMiddleware(...middlewares)),
   );
 
-  store.subscribe(
-    throttle(() => {
-      console.log('saved to localStorage');
-      saveState(store.getState());
-    }, 1000),
-  );
+  // store.subscribe(
+  //   throttle(() => {
+  //     console.log('saved to localStorage');
+  //     saveState(store.getState());
+  //   }, 1000),
+  // );
 
   // sagaMiddleware.run(rootSaga);
   store.runSaga = sagaMiddleware.run;
