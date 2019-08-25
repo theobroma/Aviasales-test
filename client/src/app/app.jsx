@@ -16,9 +16,10 @@ store.runSaga(rootSaga);
 
 // Any dispatch for test
 const action = {
-  type: 'POLL_START',
+  // type: 'POLL_START',
+  type: 'GET_SEARCH_ID_REQUEST',
 };
-// store.dispatch(action);
+store.dispatch(action);
 
 render(
   <Provider store={store}>

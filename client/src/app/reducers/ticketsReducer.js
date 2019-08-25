@@ -1,5 +1,14 @@
 // import { FETCH_USERS_PENDING } from '../actions';
-import { POLL_START, POLL_STOP, GET_DATA_SUCCESS, GET_DATA_FAILURE } from 'constants/actions';
+import {
+  REQUEST,
+  SUCCESS,
+  ERROR,
+  POLL_START,
+  POLL_STOP,
+  GET_DATA_SUCCESS,
+  GET_DATA_FAILURE,
+  GET_SEARCH_ID,
+} from 'constants/actions';
 
 // export const initialState = {
 //   tickets: [],
@@ -18,11 +27,17 @@ const initialState = {
   tickets: [],
   stop: false,
   polling: false,
+  searchId: '',
 };
 
 const tickets = (state = initialState, action) => {
   console.log(action);
   switch (action.type) {
+    case GET_SEARCH_ID + SUCCESS:
+      return {
+        ...state,
+        searchId: action.searchId,
+      };
     case POLL_START:
       return {
         ...state,
@@ -36,7 +51,8 @@ const tickets = (state = initialState, action) => {
     case GET_DATA_SUCCESS:
       return {
         ...state,
-        tickets: [...state.tickets, ...action.payload.tickets],
+        // tickets: [...state.tickets, ...action.payload.tickets],
+        tickets: action.payload.tickets,
         polling: !action.payload.stop,
       };
     case GET_DATA_FAILURE:

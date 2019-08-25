@@ -21,7 +21,8 @@ const configureStore = () => {
       // tickets: TICKETS_MOCK_DATA_V2.tickets,
       tickets: [],
       stop: false,
-      pending: false,
+      polling: false,
+      searchId: '',
       errorMessage: '',
     },
     currency: {
