@@ -1,16 +1,19 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
+import createSagaMiddleware, { END } from 'redux-saga';
 import throttle from 'lodash/throttle';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import rootSaga from './sagas/index';
 import { loadState, saveState } from './helpers/localStorage';
 import rootReducer from './reducers';
 // mock data
-import TICKETS_MOCK_DATA from './helpers/TICKETS_MOCK_DATA.json';
+// import TICKETS_MOCK_DATA from './helpers/TICKETS_MOCK_DATA.json';
 import TICKETS_MOCK_DATA_V2 from './helpers/TICKETS_MOCK_DATA_V2.json';
 import CURRENCY_MOCK_DATA from './helpers/CURRENCY_MOCK_DATA.json';
 
 const configureStore = () => {
+  const sagaMiddleware = createSagaMiddleware();
   const persistedState = loadState();
 
   let totalInitialState = {
@@ -35,7 +38,7 @@ const configureStore = () => {
     collapsed: true,
   });
 
-  const middlewares = [thunk, logger];
+  const middlewares = [thunk, sagaMiddleware, logger];
 
   const composeEnhancers = composeWithDevTools({
     // Specify here name, actionsBlacklist, actionsCreators and other options
@@ -54,6 +57,9 @@ const configureStore = () => {
     }, 1000),
   );
 
+  // sagaMiddleware.run(rootSaga);
+  store.runSaga = sagaMiddleware.run;
+  store.close = () => store.dispatch(END);
   return store;
 };
 

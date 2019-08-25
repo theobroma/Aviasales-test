@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col, Button } from 'antd';
+import shortid from 'shortid';
 import format from 'helpers/format';
 import dayOfTheWeek from 'helpers/dayOfTheWeek';
 import { filterShape, currencyShape, ticketShape } from 'types';
@@ -30,7 +31,7 @@ const TicketCard = (props) => {
     currency,
     filter,
   } = props;
-  console.log(props);
+  // console.log(props);
 
   const renderCurrencySign = (val) => {
     if (val === 'USD') {
@@ -59,7 +60,8 @@ const TicketCard = (props) => {
     </Row>
   );
 
-  const renderSegments = () => segments.map((segment) => <SegmentRow segment={segment} />);
+  const renderSegments = () =>
+    segments.map((segment) => <SegmentRow key={shortid.generate()} segment={segment} />);
 
   return (
     <StyledTicketCard>

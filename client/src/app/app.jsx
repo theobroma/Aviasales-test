@@ -7,10 +7,19 @@ import 'antd/dist/antd.css';
 import './assets/styles/index.scss';
 import MainApp from './MainApp';
 import configureStore from './configureStore';
+import rootSaga from './sagas/index';
 
 window.__localeId__ = 'ru'; // eslint-disable-line
 
 const store = configureStore();
+store.runSaga(rootSaga);
+
+// Any dispatch for test
+const action = {
+  type: 'GET_SEARCH_ID_REQUEST',
+};
+store.dispatch(action);
+
 render(
   <Provider store={store}>
     <MainApp />
