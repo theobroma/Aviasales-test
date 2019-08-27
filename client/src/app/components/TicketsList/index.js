@@ -9,11 +9,16 @@ const TicketsList = (props) => {
   const { tickets = [], filter } = props;
 
   const filteredTickets = tickets.filter((ticket) => {
-    return filter.stops.includes(ticket.stops);
+    const ticketStops = ticket.segments[0].stops.length;
+    console.log(ticketStops);
+    return filter.stops.includes(ticketStops);
   });
 
+  // const arr = tickets.slice(0, 5);
   const renderTickets = () =>
-    tickets.map((ticket) => <TicketCard key={shortid.generate()} ticket={ticket} {...props} />);
+    filteredTickets
+      .slice(0, 5)
+      .map((ticket) => <TicketCard key={shortid.generate()} ticket={ticket} {...props} />);
 
   return (
     <Fragment>
