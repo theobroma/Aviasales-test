@@ -43,11 +43,7 @@ const TicketsList = (props) => {
   };
 
   const MyRow = ({ index, style }) => (
-    <div className={index % 2 ? 'ListItemOdd' : 'ListItemEven'} style={style}>
-      {/* {itemsArray[index].name} */}
-      {/* <TicketCard key={shortid.generate()} ticket={mock_ticket} /> */}
-      <TicketCard key={shortid.generate()} ticket={mock_ticket} {...props} />
-    </div>
+    <TicketCard key={shortid.generate()} ticket={filteredTickets[index]} {...props} />
   );
 
   return (
@@ -63,11 +59,13 @@ const TicketsList = (props) => {
         </Col>
       </Row>
       {/* {renderTickets()} */}
-      <TicketCard key={shortid.generate()} ticket={mock_ticket} {...props} />
+      {/* <TicketCard key={shortid.generate()} ticket={mock_ticket} {...props} /> */}
       <div className="mb4" />
-      <List height={800} itemCount={100} itemSize={191} width={800}>
-        {MyRow}
-      </List>
+      {filteredTickets.length > 0 && (
+        <List height={800} itemCount={5} itemSize={191} width={800}>
+          {MyRow}
+        </List>
+      )}
     </Fragment>
   );
 };

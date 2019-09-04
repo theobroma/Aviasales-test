@@ -31,8 +31,6 @@ const TicketCard = (props) => {
     currency,
     filter,
   } = props;
-  // console.log(props);
-  console.log(currency);
 
   const renderCurrencySign = (val) => {
     if (val === 'USD') {
@@ -78,6 +76,10 @@ TicketCard.propTypes = {
   ticket: ticketShape,
   currency: PropTypes.arrayOf(currencyShape),
   filter: filterShape,
+};
+
+TicketCard.defaultProps = {
+  ticket: {},
 };
 
 export default TicketCard;
