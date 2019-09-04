@@ -32,6 +32,7 @@ const TicketCard = (props) => {
     filter,
   } = props;
   // console.log(props);
+  console.log(currency);
 
   const renderCurrencySign = (val) => {
     if (val === 'USD') {
@@ -47,8 +48,8 @@ const TicketCard = (props) => {
     <Row style={{ marginBottom: '18px' }}>
       <Col md={16}>
         <span className="price">
-          {Math.ceil(price / currency[0].purchaseRateNB)}
-          <span className="ml2">{renderCurrencySign(currency[0].currency)}</span>
+          {currency && Math.ceil(price / currency[0].purchaseRateNB)}
+          <span className="ml2">{currency && renderCurrencySign(currency[0].currency)}</span>
         </span>
         {/* <span className="price">13 400 Р</span> */}
       </Col>
@@ -64,10 +65,12 @@ const TicketCard = (props) => {
     segments.map((segment) => <SegmentRow key={shortid.generate()} segment={segment} />);
 
   return (
-    <StyledTicketCard>
-      {TitleBlock}
-      {renderSegments()}
-    </StyledTicketCard>
+    <div style={{ paddingBottom: '20px' }}>
+      <StyledTicketCard>
+        {TitleBlock}
+        {renderSegments()}
+      </StyledTicketCard>
+    </div>
   );
 };
 

@@ -48,6 +48,8 @@
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
+    "react-window": "^1.8.5",
+    "react-window-infinite-loader": "^1.0.4",
     "recompose": "^0.30.0",
     "redux": "^4.0.4",
     "redux-devtools-extension": "^2.13.8",
