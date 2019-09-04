@@ -10,7 +10,7 @@ const TicketsList = (props) => {
 
   const filteredTickets = tickets.filter((ticket) => {
     const ticketStops = ticket.segments[0].stops.length;
-    console.log(ticketStops);
+    // console.log(ticketStops);
     return filter.stops.includes(ticketStops);
   });
 
