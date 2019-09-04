@@ -18,8 +18,8 @@ const configureStore = () => {
 
   const totalInitialState = {
     tickets: {
-      tickets: TICKETS_MOCK_DATA_V2.tickets,
-      // tickets: [],
+      // tickets: TICKETS_MOCK_DATA_V2.tickets,
+      tickets: [],
       stop: false,
       polling: false,
       searchId: '',

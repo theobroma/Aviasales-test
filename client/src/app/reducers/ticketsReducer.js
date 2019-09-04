@@ -50,8 +50,8 @@ const tickets = (state = initialState, action) => {
     case GET_DATA_SUCCESS:
       return {
         ...state,
-        // tickets: [...state.tickets, ...action.payload.tickets],
-        tickets: action.payload.tickets,
+        tickets: [...state.tickets, ...action.payload.tickets],
+        // tickets: action.payload.tickets,
         polling: !action.payload.stop,
       };
     case GET_DATA_FAILURE:
