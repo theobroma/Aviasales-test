@@ -30,6 +30,11 @@ const configureStore = () => {
       pending: false,
       errorMessage: '',
     },
+    filter: {
+      currency: 'UAH',
+      stops: [1],
+      sort: 'price',
+    },
   };
   // if persistedState is not empty then assign parsed persistedState to initState
   // if (persistedState) {

@@ -3,6 +3,7 @@ import { SET_CURRENCY, SET_STOPS } from 'constants/actions';
 export const initialState = {
   currency: 'UAH',
   stops: [3],
+  sort: 'price',
 };
 
 function filter(state = initialState, action) {
